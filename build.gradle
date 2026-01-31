@@ -1,0 +1,33 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+def jfxVersion = '21'
+def platform = 'linux'
+
+dependencies {
+    implementation "org.openjfx:javafx-base:${jfxVersion}:${platform}"
+    implementation "org.openjfx:javafx-controls:${jfxVersion}:${platform}"
+    implementation "org.openjfx:javafx-graphics:${jfxVersion}:${platform}"
+    implementation "org.openjfx:javafx-media:${jfxVersion}:${platform}"
+}
+
+application {
+    mainClass = 'ChessFrancalancia.Chess'
+}
+
+run {
+    jvmArgs = [
+        '--add-modules', 'javafx.controls,javafx.media,javafx.graphics',
+        '--add-exports', 'javafx.graphics/com.sun.javafx.application=ALL-UNNAMED'
+    ]
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
